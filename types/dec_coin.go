@@ -540,7 +540,10 @@ var _ sort.Interface = Coins{}
 
 //nolint
 func (coins DecCoins) Len() int           { return len(coins) }
-func (coins DecCoins) Less(i, j int) bool { return coins[i].Denom < coins[j].Denom }
+//dele by liuhy 
+//func (coins DecCoins) Less(i, j int) bool { return coins[i].Denom < coins[j].Denom }
+func (coins DecCoins) Less(i, j int) bool { return coins[i].Amount.LT(coins[j].Amount) }
+
 func (coins DecCoins) Swap(i, j int)      { coins[i], coins[j] = coins[j], coins[i] }
 
 // Sort is a helper function to sort the set of decimal coins in-place.
